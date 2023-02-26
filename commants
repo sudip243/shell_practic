@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "comments demo"
+echo "two types of commants"
+#echo "this line is comments"
+<<sudip
+date 
+cat
+hostname
+sudip
+echo "this is comments example"
+
+
