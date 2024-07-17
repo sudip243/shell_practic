@@ -1,0 +1,63 @@
+sudo apt update
+sudo apt upgrade -y
+corntab -l
+crontab -e
+vi abc
+---------------
+#!/bin/bash
+
+date >> file
+---------------
+pwd
+crontab -e
+-----------------
+* * * * * /home/ubuntu/new.sh
+-----------------  
+crontab -l
+cat file
+ls
+cp abc new.sh
+cat new.sh 
+crontab -e
+cat file
+ls
+sudo chmod +x new.sh
+cat new.sh
+cat file
+sudo apt update
+sudo apt install unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
+--------------------
+AWS Access Key ID [None]: AKIAW3MEDX5SEB4GXZMF
+AWS Secret Access Key [None]: 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
+Default region name [None]: us-east-2
+Default output format [None]:
+--------------------
+vi  autobackup.sh
+--------------------
+#!/bin/bash
+
+# Define variables
+BACKUP_SOURCE="/home/ubuntu/file"
+S3_BUCKET="s3://prac404"
+TIMESTAMP=$(date +"%F_%T")
+BACKUP_NAME="backup_$TIMESTAMP.tar.gz"
+
+# Create a tar.gz archive of the directory
+tar -czf /tmp/$BACKUP_NAME $BACKUP_SOURCE
+
+# Upload the archive to S3
+aws s3 cp /tmp/$BACKUP_NAME $S3_BUCKET
+
+# Remove the local backup file
+rm /tmp/$BACKUP_NAME
+
+# Log the backup operation
+echo "Backup $BACKUP_NAME uploaded to $S3_BUCKET at $TIMESTAMP" >> /var/log/backup_to_s3.log
+--------------------
+sudo chmod +x autobackup.sh
+crontab -e
+crontab -l
